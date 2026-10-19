@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Каталог — Кожевники А1</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:ital,wght@1,500;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">А1</span><span class="logo-text">Кожевники А1</span></a>
+    <nav class="main-nav">
+      <a href="catalog.html" style="color: var(--accent);">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="reviews.html">Отзывы</a>
+      <a href="delivery.html">Доставка</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="btn btn-primary">Корзина (<span id="cart-count">0</span>)</a>
+    </div>
+  </div>
+</header>
+
+<section class="block">
+  <div class="container">
+    <div class="section-head">
+      <h2>Все товары</h2>
+    </div>
+    
+    <!-- Кнопки фильтрации -->
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px;">
+      <button class="btn btn-outline filter-btn" data-filter="all" style="border-color: var(--accent); color: var(--accent);">Все</button>
+      <button class="btn btn-outline filter-btn" data-filter="pokraska">Покраска</button>
+      <button class="btn btn-outline filter-btn" data-filter="prisposoblenia">Приспособления</button>
+      <button class="btn btn-outline filter-btn" data-filter="hranenie">Хранение</button>
+      <button class="btn btn-outline filter-btn" data-filter="shablony">Шаблоны</button>
+      <button class="btn btn-outline filter-btn" data-filter="chasovye">Часовые ремешки</button>
+    </div>
+
+    <div class="product-grid" id="product-container">
+      <!-- Товары будут загружены через JS -->
+      <p>Загрузка товаров...</p>
+    </div>
+  </div>
+</section>
+
+<script src="js/catalog.js"></script>
+</body>
+</html>

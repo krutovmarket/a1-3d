@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Корзина — Кожевники А1</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:ital,wght@1,500;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">А1</span><span class="logo-text">Кожевники А1</span></a>
+    <nav class="main-nav">
+      <a href="catalog.html">Вернуться в каталог</a>
+    </nav>
+  </div>
+</header>
+
+<section class="block">
+  <div class="container">
+    <div class="section-head">
+      <h2>Ваша корзина</h2>
+    </div>
+    
+    <div id="cart-items" style="margin-bottom: 30px;">
+      <!-- Сюда будут выводиться товары -->
+    </div>
+
+    <div id="order-form" style="display: none; background: var(--surface); padding: 20px; border-radius: 12px; border: 1px solid var(--border); max-width: 500px;">
+      <h3 style="margin-bottom: 15px;">Оформить заказ</h3>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <input type="text" id="client-name" placeholder="Ваше имя" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);">
+        <input type="tel" id="client-phone" placeholder="Телефон или ник в Telegram" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text);">
+        <button class="btn btn-primary" id="submit-order" style="margin-top: 10px;">Отправить заказ</button>
+      </div>
+      <p id="status-msg" style="margin-top: 10px; font-size: 14px; color: var(--accent);"></p>
+    </div>
+  </div>
+</section>
+
+<script src="js/cart.js"></script>
+</body>
+</html>
