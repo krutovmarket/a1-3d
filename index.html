@@ -7,7 +7,34 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:ital,wght@1,500;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Стили Swiper.js -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <link rel="stylesheet" href="css/style.css">
+<style>
+  /* Стили для карточек в карусели */
+  .popularSwiper {
+    padding: 10px 40px 50px 40px; /* Отступы для стрелок */
+  }
+  .popularSwiper .swiper-slide {
+    height: auto;
+    display: flex;
+  }
+  .popularSwiper .swiper-button-next, .popularSwiper .swiper-button-prev {
+    color: var(--accent) !important;
+    background: var(--surface);
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+  }
+  .popularSwiper .swiper-button-next::after, .popularSwiper .swiper-button-prev::after {
+    font-size: 18px !important;
+    font-weight: bold;
+  }
+  .popularSwiper .swiper-pagination-bullet-active {
+    background: var(--accent) !important;
+  }
+</style>
 </head>
 <body>
 
@@ -22,13 +49,12 @@
       <a href="about.html">О нас</a>
       <a href="reviews.html">Отзывы</a>
       <a href="delivery.html">Доставка</a>
-      <a href="#contacts">Контакты</a>
     </nav>
     <div class="header-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Сменить тему">
         <span id="themeIcon">☀</span>
       </button>
-      <a href="https://vk.com/a1leather" target="_blank" rel="noopener" class="btn btn-primary">В ВК</a>
+      <a href="cart.html" class="btn btn-primary">Корзина (<span id="cart-count">0</span>)</a>
     </div>
   </div>
 </header>
@@ -42,6 +68,7 @@
     </p>
     <div class="hero-actions">
       <a href="catalog.html" class="btn btn-primary">Смотреть каталог</a>
+      <a href="product.html?id=51" class="btn btn-outline" style="border-color: var(--accent); color: var(--accent);">Заказать 3D-печать</a>
       <a href="https://vk.com/a1leather" target="_blank" rel="noopener" class="btn btn-outline">Написать в ВК</a>
     </div>
   </div>
@@ -54,35 +81,35 @@
       <a href="catalog.html">Все товары →</a>
     </div>
     <div class="cat-grid">
-      <a href="catalog.html?cat=pokraska" class="cat-card">
-        <div class="icon">🎨</div>
-        <h3>Покраска и отделка</h3>
-        <span>Ванночки, сушки, колёса, держатели</span>
-      </a>
-      <a href="catalog.html?cat=prisposoblenia" class="cat-card">
-        <div class="icon">🛠️</div>
-        <h3>Приспособления для сборки</h3>
-        <span>Колодки, зажимы, точилки, мышки</span>
-      </a>
-      <a href="catalog.html?cat=hranenie" class="cat-card">
-        <div class="icon">📦</div>
-        <h3>Хранение и организация</h3>
-        <span>Ложементы, системы, кабельменеджмент</span>
-      </a>
-      <a href="catalog.html?cat=shablony" class="cat-card">
-        <div class="icon">📐</div>
-        <h3>Шаблоны</h3>
-        <span>Радиусные, для молний, LoroPiano</span>
-      </a>
       <a href="catalog.html?cat=chasovye" class="cat-card">
         <div class="icon">⌚</div>
         <h3>Часовые ремешки</h3>
-        <span>Подиумы, трамплины, формовщики</span>
+        <span>Подиумы, трамплины, шаблоны, сушки</span>
       </a>
-      <a href="catalog.html?cat=digital" class="cat-card">
-        <div class="icon">💾</div>
-        <h3>Цифровые товары</h3>
-        <span>3D-модели для самостоятельной печати</span>
+      <a href="catalog.html?cat=shablony" class="cat-card">
+        <div class="icon">📐</div>
+        <h3>Шаблоны и колодки</h3>
+        <span>Для сумок, кармашков, молний</span>
+      </a>
+      <a href="catalog.html?cat=pokraska" class="cat-card">
+        <div class="icon">🎨</div>
+        <h3>Покраска и отделка</h3>
+        <span>Ванночки, сушки, колёса</span>
+      </a>
+      <a href="catalog.html?cat=hranenie" class="cat-card">
+        <div class="icon">📦</div>
+        <h3>Хранение и органайзеры</h3>
+        <span>Коробки, ложементы, ящики</span>
+      </a>
+      <a href="catalog.html?cat=instrumenty" class="cat-card">
+        <div class="icon">🛠️</div>
+        <h3>Инструменты</h3>
+        <span>Точилки, наждачка, кнопки</span>
+      </a>
+      <a href="catalog.html?cat=bruski" class="cat-card">
+        <div class="icon">⚙️</div>
+        <h3>Для брусовки</h3>
+        <span>Упоры, кабель-менеджмент, ящики</span>
       </a>
     </div>
   </div>
@@ -94,48 +121,18 @@
       <h2>Популярное</h2>
       <a href="catalog.html">Все товары →</a>
     </div>
-    <div class="product-grid">
-      <article class="product-card">
-        <div class="product-thumb">Фото товара</div>
-        <div class="product-body">
-          <h3>Ванночка для покраски урезов (стандартная)</h3>
-          <div class="product-price">Цена по запросу</div>
-        </div>
-        <div class="product-actions">
-          <a href="product.html?id=1" class="btn btn-outline">Подробнее</a>
-        </div>
-      </article>
-      <article class="product-card">
-        <div class="product-thumb">Фото товара</div>
-        <div class="product-body">
-          <h3>Игольница</h3>
-          <div class="product-price">Цена по запросу</div>
-        </div>
-        <div class="product-actions">
-          <a href="product.html?id=2" class="btn btn-outline">Подробнее</a>
-        </div>
-      </article>
-      <article class="product-card">
-        <div class="product-thumb">Фото товара</div>
-        <div class="product-body">
-          <h3>Шаблон радиусный с упором</h3>
-          <div class="product-price">Цена по запросу</div>
-        </div>
-        <div class="product-actions">
-          <a href="product.html?id=3" class="btn btn-outline">Подробнее</a>
-        </div>
-      </article>
-      <article class="product-card">
-        <div class="product-thumb">Фото товара</div>
-        <div class="product-body">
-          <h3>Сушка урезов для часовых ремешков</h3>
-          <div class="product-price">Цена по запросу</div>
-        </div>
-        <div class="product-actions">
-          <a href="product.html?id=4" class="btn btn-outline">Подробнее</a>
-        </div>
-      </article>
+    
+    <!-- Карусель популярных товаров -->
+    <div class="swiper popularSwiper">
+      <div class="swiper-wrapper" id="popular-container">
+        <!-- Товары загрузятся через JS -->
+        <p style="text-align: center; width: 100%;">Загрузка товаров...</p>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
+    
   </div>
 </section>
 
@@ -147,7 +144,7 @@
     </div>
     <div class="contact-actions">
       <a href="https://vk.com/a1leather" target="_blank" rel="noopener" class="btn btn-primary">Написать в ВК</a>
-      <a href="https://t.me/kkrut" target="_blank" rel="noopener" class="btn btn-outline">Telegram</a>
+      <a href="https://t.me/a1leather/281" target="_blank" rel="noopener" class="btn btn-outline">Telegram-чат</a>
       <a href="tel:+79969590200" class="btn btn-outline">+7 996 959-02-00</a>
     </div>
   </div>
@@ -172,11 +169,11 @@
         <a href="tel:+79969590200">+7 996 959-02-00</a>
         <a href="mailto:krutovmarket@gmail.com">krutovmarket@gmail.com</a>
         <a href="https://vk.com/a1leather" target="_blank" rel="noopener">ВКонтакте</a>
-        <a href="https://t.me/kkrut" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://t.me/a1leather/281" target="_blank" rel="noopener">Telegram-чат</a>
       </div>
       <div class="footer-col">
         <h4>Адрес</h4>
-        <p>Калининград,<br>ул. Геологическая, 1</p>
+        <p>Калининград,<br>ул. Геологическая, 1,<br>офис 318 (3 этаж)</p>
         <p style="margin-top:8px;">Пн–Пт: 12:00–20:00</p>
       </div>
     </div>
@@ -187,5 +184,15 @@
 </footer>
 
 <script src="js/main.js"></script>
+<!-- Подключаем Swiper.js -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+

@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Избранное — Кожевники А1</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:ital,wght@1,500;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">А1</span><span class="logo-text">Кожевники А1</span></a>
+    <nav class="main-nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="reviews.html">Отзывы</a>
+      <a href="delivery.html">Доставка</a>
+    </nav>
+    <div class="header-actions" style="display: flex; align-items: center; gap: 10px;">
+      <button id="callback-btn" class="btn btn-outline" style="padding: 8px 12px; font-size: 13px; border-color: var(--accent); color: var(--accent);">Обратный звонок</button>
+      <a href="wishlist.html" class="btn btn-outline" style="border-color: var(--accent); color: var(--accent);">❤️ (<span id="wishlist-count">0</span>)</a>
+      <a href="cart.html" class="btn btn-primary">Корзина (<span id="cart-count">0</span>)</a>
+      <button class="theme-toggle" id="themeToggle"><span id="themeIcon">☀</span></button>
+    </div>
+  </div>
+</header>
+
+<section class="block" style="padding-top: 40px;">
+  <div class="container">
+    <h1 style="margin-bottom: 30px;">Избранное</h1>
+    <div class="product-grid" id="product-container">
+      <!-- Сюда загрузятся товары -->
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">© <span id="year"></span> Кожевники А1. Все права защищены.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const wishlist = JSON.parse(localStorage.getItem('a1_wishlist')) || [];
+    const container = document.getElementById('product-container');
+    
+    if (wishlist.length === 0) {
+      container.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding: 40px 0; color:var(--text-muted);">В избранном пока пусто. Добавляйте товары с помощью ❤️</p>';
+      return;
+    }
+
+    fetch('data/products.json')
+      .then(res => res.json())
+      .then(data => {
+        const items = data.filter(p => wishlist.includes(p.id));
+        
+        items.forEach(product => {
+          const card = document.createElement('article');
+          card.className = 'product-card';
+          card.style.cursor = 'pointer';
+          
+          card.innerHTML = `
+            <a href="product.html?id=${product.id}" style="display: flex; flex-direction: column; flex: 1; text-decoration: none; color: inherit;">
+              <div class="product-thumb">Фото товара</div>
+              <div class="product-body">
+                <h3>${product.title}</h3>
+                <div class="product-price">${product.price}</div>
+              </div>
+            </a>
+            <div class="product-actions" style="padding: 0 16px 16px;">
+              <button class="btn btn-primary add-to-cart" data-id="${product.id}" style="width:100%;">В корзину</button>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        // Добавляем обработчики в корзину
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const id = parseInt(e.target.getAttribute('data-id'));
+            let cart = JSON.parse(localStorage.getItem('a1_cart')) || [];
+            let item = cart.find(i => (typeof i === 'object' ? i.id : i) === id);
+            if (!item) {
+              cart.push({ id: id, qty: 1, config: null });
+              localStorage.setItem('a1_cart', JSON.stringify(cart));
+              alert('Товар добавлен в корзину!');
+              updateCounters();
+            } else {
+              alert('Уже в корзине');
+            }
+          });
+        });
+      });
+  });
+</script>
+</body>
+</html>
+

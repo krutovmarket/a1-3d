@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Отзывы — Кожевники А1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:ital,wght@1,500;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Стили Swiper.js -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .swiper { width: 100%; padding: 10px 40px 50px 40px; overflow: hidden; }
+  .swiper-slide { height: auto; display: flex; }
+  .review-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px; display: flex; flex-direction: column; width: 100%;
+  }
+  .review-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px; border-bottom: 1px solid var(--border);
+    padding-bottom: 10px; flex-wrap: wrap; gap: 8px;
+  }
+  .review-author { font-weight: 600; font-size: 16px; }
+  .review-source {
+    font-size: 12px; color: var(--text-muted);
+    background: var(--border); padding: 2px 8px; border-radius: 12px;
+  }
+  .review-stars { color: #ffb703; font-size: 16px; letter-spacing: 2px; }
+  .review-text {
+    font-size: 14px; color: var(--text-muted);
+    line-height: 1.6; font-style: italic; margin-top: 10px; flex-grow: 1;
+  }
+  .swiper-button-next, .swiper-button-prev {
+    color: var(--accent) !important; background: var(--surface);
+    width: 40px !important; height: 40px !important;
+    border-radius: 50%; border: 1px solid var(--border);
+  }
+  .swiper-button-next::after, .swiper-button-prev::after { font-size: 18px !important; font-weight: bold; }
+  .swiper-pagination-bullet-active { background: var(--accent) !important; }
+  
+  .review-form-container {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 30px; max-width: 600px; margin: 0 auto;
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500; }
+  .form-control {
+    width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--bg); color: var(--text); font-family: inherit; font-size: 15px;
+  }
+  .form-control:focus { outline: none; border-color: var(--accent); }
+  textarea.form-control { resize: vertical; min-height: 120px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Кожевники А1">
+      <span class="logo-mark">А1</span>
+      <span class="logo-text">Кожевники А1</span>
+    </a>
+    <nav class="main-nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="reviews.html">Отзывы</a>
+      <a href="delivery.html">Доставка</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Сменить тему">
+        <span id="themeIcon">☀</span>
+      </button>
+      <a href="cart.html" class="btn btn-primary">Корзина (<span id="cart-count">0</span>)</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="padding: 60px 0 40px;">
+  <div class="container">
+    <h1>Отзывы <span class="accent">мастеров</span></h1>
+    <p class="lead">Что говорят коллеги о моих приспособлениях и качестве сервиса.</p>
+  </div>
+</section>
+
+<section class="block" style="padding-top: 0;">
+  <div class="container">
+    <div style="display: flex; gap: 16px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center;">
+      <a href="https://t.me/a1leather/281" target="_blank" class="btn btn-outline" style="border-color: #2AABEE; color: #2AABEE;">Читать отзывы в Telegram</a>
+      <a href="https://vk.com/a1leather" target="_blank" class="btn btn-primary">Читать отзывы в ВК</a>
+      <a href="https://www.avito.ru/brands/2a21207e321129954ac723bf8d233704" target="_blank" class="btn btn-outline" style="border-color: #00AAFF; color: #00AAFF;">Читать отзывы на Авито</a>
+    </div>
+
+    <!-- ПУСТАЯ КАРУСЕЛЬ (наполнится из JS) -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper" id="reviews-wrapper">
+        <!-- Сюда JS вставит отзывы -->
+        <p style="text-align: center; width: 100%;">Загрузка отзывов...</p>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Форма -->
+    <div class="review-form-container" id="review-form-section" style="margin-top: 30px;">
+      <h3>Оставить отзыв</h3>
+      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Ваш отзыв появится на сайте после проверки.</p>
+      <form id="reviewForm">
+        <div class="form-group">
+          <label for="reviewName">Ваше имя *</label>
+          <input type="text" id="reviewName" class="form-control" required placeholder="Иван">
+        </div>
+        <div class="form-group">
+          <label for="reviewRating">Оценка *</label>
+          <select id="reviewRating" class="form-control" required>
+            <option value="5">5 звезд — Отлично</option>
+            <option value="4">4 звезды — Хорошо</option>
+            <option value="3">3 звезды — Нормально</option>
+            <option value="2">2 звезды — Плохо</option>
+            <option value="1">1 звезда — Ужасно</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="reviewText">Текст отзыва *</label>
+          <textarea id="reviewText" class="form-control" required placeholder="Расскажите о вашем опыте..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitReviewBtn" style="width: 100%;">Отправить отзыв</button>
+        <p id="reviewStatus" style="margin-top: 15px; font-size: 14px; text-align: center;"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-col"><h4>Кожевники А1</h4><p>Приспособления для кожевников<br>ручной работы и 3D-печати.</p></div>
+      <div class="footer-col"><h4>Разделы</h4><a href="catalog.html">Каталог</a><a href="about.html">О нас</a><a href="reviews.html">Отзывы</a><a href="delivery.html">Доставка</a></div>
+      <div class="footer-col"><h4>Контакты</h4><a href="tel:+79969590200">+7 996 959-02-00</a><a href="mailto:krutovmarket@gmail.com">krutovmarket@gmail.com</a><a href="https://vk.com/a1leather" target="_blank">ВКонтакте</a><a href="https://t.me/a1leather/281" target="_blank">Telegram-чат</a></div>
+      <div class="footer-col"><h4>Адрес</h4><p>Калининград,<br>ул. Геологическая, 1,<br>офис 318 (3 этаж)</p><p style="margin-top:8px;">Пн–Пт: 12:00–20:00</p></div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Кожевники А1. Все права защищены.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="js/reviews.js"></script>
+</body>
+</html>
+
+
+

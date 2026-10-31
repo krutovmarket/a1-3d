@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>О нас — Кожевники А1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:ital,wght@1,500;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* Стили для страницы О нас */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 820px) {
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+  }
+  .about-text p {
+    margin-bottom: 16px;
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .about-text h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--accent);
+  }
+  .info-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .info-card h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .info-card p, .info-card a {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.5;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .info-card a:hover { color: var(--accent); }
+  .note-text {
+    font-size: 13px !important;
+    color: var(--accent) !important;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Кожевники А1">
+      <span class="logo-mark">А1</span>
+      <span class="logo-text">Кожевники А1</span>
+    </a>
+    <nav class="main-nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="reviews.html">Отзывы</a>
+      <a href="delivery.html">Доставка</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Сменить тему">
+        <span id="themeIcon">☀</span>
+      </button>
+      <a href="cart.html" class="btn btn-primary">Корзина (<span id="cart-count">0</span>)</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="padding: 60px 0;">
+  <div class="container">
+    <h1>О мастерской <span class="accent">Кожевники А1</span></h1>
+    <p class="lead">Создаю инструменты, которые делают работу с кожей удобнее и быстрее.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <div class="about-grid">
+      
+      <!-- Левая колонка: Текст -->
+      <div class="about-text">
+        <h3>Привет, меня зовут Николай Крутов!</h3>
+        <p>
+          Я мастер-кожевник из Калининграда. Моя мастерская специализируется на создании аксессуаров из натуральной кожи. В процессе работы я столкнулся с тем, что нужных приспособлений для комфортного труда либо нет в продаже, либо те, что можно купить, совершенно не устраивают по эргономике, размерам или качеству.
+        </p>
+        <p>
+          Тогда я купил 3D-принтер и начал проектировать и печатать инструменты для себя. Шаблоны, сушилки, держатели для краски, органайзеры — всё то, что я использую каждый день в своей мастерской.
+        </p>
+        <p>
+          Друзья и коллеги-кожевники заметили мои инструменты и начали просить сделать такие же. Так хобби переросло в отдельное направление — <b>Кожевники А1</b>. Теперь я делюсь этими приспособлениями со всем сообществом мастеров.
+        </p>
+        <p>
+          Я не просто печатаю модели из интернета. Я сам разрабатываю каждое изделие, тестирую его в работе, дорабатываю эргономику и только потом выкладываю в каталог. Всё, что вы видите на сайте, проверено моими руками.
+        </p>
+        <div style="margin-top: 30px;">
+          <a href="catalog.html" class="btn btn-primary">Перейти в каталог</a>
+        </div>
+      </div>
+
+      <!-- Правая колонка: Контакты -->
+      <div id="contacts">
+        <div class="info-card">
+          <h4>Адрес мастерской (для личного посещения)</h4>
+          <p>Калининград, ул. Геологическая, 1<br><b>Офис 318, 3 этаж</b></p>
+          <p class="note-text">* Посещение только по предварительной договоренности</p>
+        </div>
+        <div class="info-card">
+          <h4>Режим работы</h4>
+          <p>Пн–Пт: с 12:00 до 20:00<br>Сб–Вс: по договоренности</p>
+        </div>
+        <div class="info-card">
+          <h4>Связаться со мной</h4>
+          <a href="tel:+79969590200">+7 996 959-02-00</a>
+          <a href="mailto:krutovmarket@gmail.com">krutovmarket@gmail.com</a>
+          <a href="https://t.me/a1leather/281" target="_blank" rel="noopener">Telegram: @kkrut</a>
+          <a href="https://vk.com/a1leather" target="_blank" rel="noopener">ВКонтакте: vk.com/a1leather</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Кожевники А1</h4>
+        <p>Приспособления для кожевников<br>ручной работы и 3D-печати.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Разделы</h4>
+        <a href="catalog.html">Каталог</a>
+        <a href="about.html">О нас</a>
+        <a href="reviews.html">Отзывы</a>
+        <a href="delivery.html">Доставка</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+79969590200">+7 996 959-02-00</a>
+        <a href="mailto:krutovmarket@gmail.com">krutovmarket@gmail.com</a>
+        <a href="https://vk.com/a1leather" target="_blank" rel="noopener">ВКонтакте</a>
+        <a href="https://t.me/a1leather/281" target="_blank" rel="noopener">Telegram</a>
+      </div>
+      <div class="footer-col">
+        <h4>Адрес</h4>
+        <p>Калининград,<br>ул. Геологическая, 1,<br>офис 318 (3 этаж)</p>
+        <p style="margin-top:8px;">Пн–Пт: 12:00–20:00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Кожевники А1. Все права защищены.
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
+
+
+
+

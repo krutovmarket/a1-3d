@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Доставка и оплата — Кожевники А1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:ital,wght@1,500;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .delivery-section { margin-bottom: 40px; }
+  .delivery-section h2 { font-size: 24px; margin-bottom: 20px; border-bottom: 2px solid var(--accent); padding-bottom: 10px; display: inline-block; }
+  .delivery-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; margin-bottom: 15px; display: flex; gap: 20px; align-items: flex-start;
+  }
+  @media (max-width: 600px) { .delivery-card { flex-direction: column; gap: 10px; } }
+  .delivery-card h3 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
+  .delivery-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin-bottom: 8px; }
+  .delivery-card .note { font-size: 13px; font-style: italic; color: var(--accent); }
+  .delivery-icon { font-size: 32px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">А1</span><span class="logo-text">Кожевники А1</span></a>
+    <nav class="main-nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="about.html">О нас</a>
+      <a href="reviews.html">Отзывы</a>
+      <a href="delivery.html" style="color: var(--accent);">Доставка</a>
+    </nav>
+    <div class="header-actions" style="display: flex; align-items: center; gap: 10px;">
+      <button id="callback-btn" class="btn btn-outline" style="padding: 8px 12px; font-size: 13px; border-color: var(--accent); color: var(--accent);">Обратный звонок</button>
+      <a href="wishlist.html" class="btn btn-outline" style="border-color: var(--accent); color: var(--accent);">❤️ (<span id="wishlist-count">0</span>)</a>
+      <a href="cart.html" class="btn btn-primary">Корзина (<span id="cart-count">0</span>)</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Сменить тему"><span id="themeIcon">☀</span></button>
+    </div>
+  </div>
+</header>
+
+<section class="block" style="padding-top: 40px;">
+  <div class="container">
+    <h1 style="margin-bottom: 30px;">Доставка и оплата</h1>
+
+    <!-- БЛОК 1: Калининград -->
+    <div class="delivery-section">
+      <h2>Калининград и область</h2>
+      
+      <div class="delivery-card">
+        <div class="delivery-icon">🏢</div>
+        <div>
+          <h3>Самовывоз или личная встреча</h3>
+          <p>По предварительной договоренности мы ждем вас в нашей мастерской по адресу: <b>г. Калининград, ул. Геологическая, 1, офис 318 (3 этаж)</b>.</p>
+          <p class="note">Пожалуйста, обязательно напишите или позвоните перед приездом, чтобы я точно был на месте.</p>
+        </div>
+      </div>
+
+      <div class="delivery-card">
+        <div class="delivery-icon">🚕</div>
+        <div>
+          <h3>Доставка сервисом Яндекс Go</h3>
+          <p>Для жителей и гостей Калининграда и области возможна быстрая доставка до нужного адреса сервисом Яндекс Go.</p>
+          <p class="note">(Стоимость доставки рассчитывается по тарифам сервиса и оплачивается отдельно)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- БЛОК 2: Другие регионы -->
+    <div class="delivery-section">
+      <h2>Доставка по России</h2>
+      
+      <div class="delivery-card">
+        <div class="delivery-icon">📦</div>
+        <div>
+          <h3>Почта России</h3>
+          <p>Самый удобный и выгодный вариант для отправки в другие регионы. Для отправки потребуется: ФИО получателя, номер мобильного телефона, индекс и полный адрес.</p>
+          <p class="note">(Стоимость доставки рассчитывается индивидуально и оплачивается отдельно перед отправкой)</p>
+        </div>
+      </div>
+
+      <div class="delivery-card">
+        <div class="delivery-icon">🤝</div>
+        <div>
+          <h3>Доставка через Авито</h3>
+          <p>Вы можете оформить доставку через Авито. Для этого <a href="https://www.avito.ru/brands/2a21207e321129954ac723bf8d233704" target="_blank" rel="noopener" style="color: var(--accent); font-weight: bold; text-decoration: underline;">перейдите в мой профиль на Авито</a> и найдите нужное объявление.</p>
+          <p><b>Как оплатить:</b> Если стоимость нужного вам товара превышает цену, указанную в объявлении на Авито (например, при заказе кастомных размеров или дополнительных опций), вы можете выкупить объявление на Авито, а <b>разницу доплатить мне напрямую</b> переводом на карту.</p>
+          <p class="note">Это позволяет вам получить защиту сделки Авито, а мне — точную стоимость индивидуального заказа.</p>
+        </div>
+      </div>
+
+      <div class="delivery-card" style="border-color: #ffcccc;">
+        <div class="delivery-icon">🚫</div>
+        <div>
+          <h3>Транспортная компания СДЭК</h3>
+          <p>В данный момент отправка через СДЭК <b>не осуществляется</b> из-за сложностей логистики и работы данной компании в нашем регионе.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact-strip">
+  <div class="container contact-strip-inner">
+    <div>
+      <h2>Остались вопросы по доставке?</h2>
+      <p>Напишите мне — подскажу точную стоимость и сроки.</p>
+    </div>
+    <div class="contact-actions">
+      <a href="https://vk.com/a1leather" target="_blank" rel="noopener" class="btn btn-primary">Написать в ВК</a>
+      <a href="https://t.me/a1leather/281" target="_blank" rel="noopener" class="btn btn-outline">Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-col"><h4>Кожевники А1</h4><p>Приспособления для кожевников<br>ручной работы и 3D-печати.</p></div>
+      <div class="footer-col"><h4>Разделы</h4><a href="catalog.html">Каталог</a><a href="about.html">О нас</a><a href="reviews.html">Отзывы</a><a href="delivery.html">Доставка</a></div>
+      <div class="footer-col"><h4>Контакты</h4><a href="tel:+79969590200">+7 996 959-02-00</a><a href="mailto:krutovmarket@gmail.com">krutovmarket@gmail.com</a><a href="https://vk.com/a1leather" target="_blank">ВКонтакте</a></div>
+      <div class="footer-col"><h4>Адрес</h4><p>Калининград,<br>ул. Геологическая, 1,<br>офис 318 (3 этаж)</p></div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Кожевники А1. Все права защищены.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
+
